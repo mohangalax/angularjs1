@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.simple.mail.box</groupId>
+		<artifactId>simple-mail-box</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>simple-mail-box-ear</artifactId>
+	<packaging>ear</packaging>
+	
+	<properties>
+		<final.name>${project.artifactId}</final.name>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.simple.mail.box</groupId>
+			<artifactId>simple-mail-box-web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${final.name}</finalName>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10.1</version>
+				<configuration>
+					<modules>
+						<webModule>
+							<groupId>com.simple.mail.box</groupId>
+							<artifactId>simple-mail-box-web</artifactId>
+							<contextRoot>/mail</contextRoot>
+						</webModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
